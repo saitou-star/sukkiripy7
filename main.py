@@ -26,6 +26,31 @@ button.pack()
 entry = tk.Entry(root,font=("Arial",30))
 entry.pack()
 
+# 画像を表示    
+load_image = tk.PhotoImage(file="curry.png") # 画像読み込み
+img = tk.Label(root, image=load_image) # 表示するために画像を渡す⇒imgに
+img.pack() # 画像を配置(= pack())
+
+
+# 複数行のメッセージ
+msg = tk.Message(
+    root,
+    text="ああああ眠い！！！ぐあああああああああああああああああああああ", # テキスト
+    font=('Arial', 20), # 文字の種類,大きさ
+    bg = "white", # バックグラウンドの色
+    width = 300 # テキスト表示のウインドウの大きさ
+)
+# msg.pack()
+
+# canvasを使う
+canvas = tk.Canvas(root, bg="pink", width=500,height=300) # canvasウインドウ ＆ バックグラウンドのピンク ＆ サイズ
+canvas.pack() # 配置
+# ↓の20,20=x軸,y軸だが、textの真ん中が0，0の位置になる。fillは塗りつぶす。anchorで基準値が左上になる(n=north,w=west,c=center(真ん中))
+canvas.create_text(0, 0, text="キャンパスもりもり", fill='white', font=("Arial", 20),anchor='nw') 
+canvas.create_text(float(canvas["width"])/2, float(canvas["height"])/2, text="えっ、なんで？", fill='white', font=("Arial", 20),anchor='center') 
+canvas.create_text(canvas["width"], canvas["height"], text="しゃべっていい？", fill='white', font=("Arial", 20),anchor='se') 
+
+
 root.mainloop()
 
 
